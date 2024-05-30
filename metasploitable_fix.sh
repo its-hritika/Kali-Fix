@@ -44,38 +44,57 @@ fi
 
 echo "Running with sudo privileges!"
 
+echo "Checking Dependencies..."
+
+Checking_Dependencies()
+	{
+ 		# Function to check if a command exists
+			command_exists() {
+    			command -v "$1" >/dev/null 2>&1
+			}
+
+		# Check for apktool
+			if command_exists apktool; then
+    			 echo "apktool is already installed."
+			else
+   			 echo "apktool is not installed. Installing..."
+    			sudo apt update && sudo apt install apktool -y
+			fi
+
+		# Check for zipalign
+			if command_exists zipalign; then
+   			 echo "zipalign is already installed."
+			else
+   			 echo "zipalign is not installed. Installing..."
+    			 sudo apt update && sudo apt install zipalign -y
+			fi
+ 	}
 echo "Fetching ZipAlign..."
 
 fixing_zipalign() 
 	{
     		wget http://ftp.de.debian.org/debian/pool/main/a/android-platform-build/zipalign_8.1.0+r23-2_amd64.deb
     		chmod +x zipalign_8.1.0+r23-2_amd64.deb
-    		sudo apt install ./zipalign_8.1.0+r23-2_amd64.deb -y
-    		echo "ZipAlign Installed Succesfully..."
+    		sudo dpkg -i ./zipalign_8.1.0+r23-2_amd64.deb 
+    		rm zipalign_8.1.0+r23-2_amd64.deb
+      		echo "ZipAlign Installed Succesfully..."
 	}
 
 echo "Fetching ApkTool"
 
 fixing_apktool() 
 	{
-    		wget https://github.com/iBotPeaches/Apktool/releases/download/v2.9.3/apktool_2.9.3.jar
-    		mv apktool_2.9.3.jar apktool
-		sudo rm /usr/bin/apktool
-		sudo mv apktool /usr/bin
-		cd /usr/bin
+ 		cd /usr/bin
+		sudo rm apktool
+    		sudo wget https://github.com/iBotPeaches/Apktool/releases/download/v2.9.3/apktool_2.9.3.jar
+    		sudo mv apktool_2.9.3.jar apktool
 		sudo chmod +x apktool
+  		echo "ApkTool Installed Succesfully...."
 	}
 
-echo "Cleaning Up...." 
-
-clean_up()
-	{
-		rm zipalign_8.1.0+r23-2_amd64.deb
-		rm *.jar
-	}
 
 echo "Done !"
 # Function Calls
+Checking_Dependencies
 fixing_zipalign
 fixing_apktool
-clean_up
