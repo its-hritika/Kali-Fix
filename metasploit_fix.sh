@@ -73,11 +73,8 @@ echo "Fetching ZipAlign..."
 
 fixing_zipalign() 
 	{
-    		wget http://ftp.de.debian.org/debian/pool/main/a/android-platform-build/zipalign_8.1.0+r23-2_amd64.deb
-    		chmod +x zipalign_8.1.0+r23-2_amd64.deb
-    		sudo dpkg -i ./zipalign_8.1.0+r23-2_amd64.deb 
-    		rm zipalign_8.1.0+r23-2_amd64.deb
-      		echo "ZipAlign Installed Succesfully..."
+    		sudo apt update && sudo apt install -y google-android-build-tools-35.0.0-installer
+      		echo "ZipAlign Fixed Succesfully..."
 	}
 
 echo "Fetching ApkTool"
@@ -85,15 +82,21 @@ echo "Fetching ApkTool"
 fixing_apktool() 
 	{
  		cd /usr/bin
-		sudo rm apktool
-    		sudo wget https://github.com/iBotPeaches/Apktool/releases/download/v2.9.3/apktool_2.9.3.jar
-    		sudo mv apktool_2.9.3.jar apktool
-		sudo chmod +x apktool
+		
+  		sudo rm apktool
+    		
+      		# Fetch the latest release from GitHub API
+		LATEST_RELEASE_URL=$(curl -s https://api.github.com/repos/iBotPeaches/Apktool/releases/latest | jq -r .assets[0].browser_download_url)
+
+		# Download the APKTool jar file
+		wget $LATEST_RELEASE_URL -O apktool
+		sudo chmod 755 apktool
   		echo "ApkTool Installed Succesfully...."
 	}
 
 
 echo "Done !"
+
 # Function Calls
 Checking_Dependencies
 fixing_zipalign
