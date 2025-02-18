@@ -30,6 +30,7 @@ check_command() {
 # Prerequisite Check
 check_command curl
 check_command gpg
+check_command pass
 print_success "All prerequisites are installed"
 
 # Update Package List
@@ -87,6 +88,14 @@ sudo apt install -y ./docker-desktop.deb
 rm docker-desktop.deb
 print_success "Docker Desktop installed successfully"
 
+# Initialize pass for Docker Desktop authentication
+print_success "Initializing pass for Docker Desktop authentication"
+gpg --generate-key
+
+echo -e "\033[1;36mEnter the generated GPG key ID: \033[0m"
+read GPG_KEY_ID
+pass init "$GPG_KEY_ID"
+print_success "Pass initialized with GPG key: $GPG_KEY_ID"
 
 # Completion Message
 echo -e "\n\033[1;32m🎉 Docker setup is complete! You can now use Docker and Docker Desktop on your system.\033[0m\n"
