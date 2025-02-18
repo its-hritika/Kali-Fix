@@ -1,11 +1,11 @@
-# Kali Toolbox
+# Kali Toolbox 🛠️
 
 Kali Toolbox is a repository designed to enhance the usability of Kali Linux by providing essential scripts and fixes. This repository includes:
 
 - **Metasploit Fix**: A script to fix zipalign and apktool issues with Metasploit on Kali Linux.
 - **Docker Installation Script**: `install-docker.sh` to install Docker and Docker Desktop on Kali Linux with necessary configurations.
 
-## Features
+## Features 
 - Easy-to-use scripts for setting up and fixing essential tools on Kali Linux.
 - Automated Docker installation, including setting up `pass` for credential storage.
 - Fixes for Metasploit to ensure smooth operation.
