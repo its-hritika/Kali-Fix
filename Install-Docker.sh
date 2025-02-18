@@ -23,6 +23,7 @@ trap 'print_error $LINENO' ERR
 # Function: Check if Command Exists
 check_command() {
     if ! command -v "$1" &> /dev/null; then
+        echo -e "\033[1;33m⚠️  Installing missing dependency: $1\033[0m"
         sudo apt install -y "$1"
     fi
 }
