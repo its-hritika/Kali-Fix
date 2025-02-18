@@ -13,15 +13,19 @@ Kali Toolbox is a repository designed to enhance the usability of Kali Linux by 
 ## Installation
 
 ### Installing Docker
+
 Run the following command to install Docker using the `install-docker.sh` script:
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/its-ashu-otf/Kali-ToolBox/refs/heads/main/Install-Docker.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/its-hritika/Kali-ToolBox/main/Install-Docker.sh | sudo bash
 ```
 
 ### Metasploit Fix
+
 Run the Metasploit fix script:
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/its-ashu-otf/Kali-ToolBox/refs/heads/main/Fix-MetaSploit.sh | bash
+curl -fsSL https://raw.githubusercontent.com/its-hritika/Kali-ToolBox/main/Fix-MetaSploit.sh | bash
 ```
 
 
