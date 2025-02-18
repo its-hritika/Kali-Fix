@@ -21,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/its-ashu-otf/Kali-ToolBox/refs/head
 ### Metasploit Fix
 Run the Metasploit fix script:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/its-ashu-otf/Kali-ToolBox/refs/heads/main/metasploit_fix.sh | bash
+curl -fsSL https://raw.githubusercontent.com/its-ashu-otf/Kali-ToolBox/refs/heads/main/Fix-MetaSploit.sh | bash
 ```
 
 
